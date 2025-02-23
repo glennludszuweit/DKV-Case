@@ -1,1 +1,9 @@
-<p>home works!</p>
+@for (vehicle of vehicles(); track vehicle.id) {
+<div class="">
+  <a
+    [routerLink]="'/vehicle/' + vehicle.id"
+    routerLinkActive="router-link-active"
+    >{{ vehicle.name }}</a
+  >
+</div>
+}
