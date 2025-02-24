@@ -1,1 +1,181 @@
-<p>add-vehicle works!</p>
+<div
+  *ngIf="isOpen()"
+  class="fixed inset-0 flex items-center justify-center bg-[#111111] absolute"
+>
+  <div class="bg-white rounded-lg p-6 shadow-xl w-1/2 relative">
+    <button
+      (click)="close()"
+      class="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+    <form [formGroup]="newVehicle" (ngSubmit)="addVehicle()">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="name"
+          >Name</label
+        >
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="name"
+          type="text"
+          formControlName="name"
+        />
+        <div
+          *ngIf="
+            newVehicle.get('name')?.invalid &&
+            (newVehicle.get('name')?.dirty || newVehicle.get('name')?.touched)
+          "
+          class="text-red-500 text-xs italic"
+        >
+          Name is required.
+        </div>
+      </div>
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="manufacturer"
+          >Manufacturer</label
+        >
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="manufacturer"
+          type="text"
+          formControlName="manufacturer"
+        />
+        <div
+          *ngIf="
+            newVehicle.get('manufacturer')?.invalid &&
+            (newVehicle.get('manufacturer')?.dirty ||
+              newVehicle.get('manufacturer')?.touched)
+          "
+          class="text-red-500 text-xs italic"
+        >
+          Manufacturer is required.
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="model"
+          >Model</label
+        >
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="model"
+          type="text"
+          formControlName="model"
+        />
+        <div
+          *ngIf="
+            newVehicle.get('model')?.invalid &&
+            (newVehicle.get('model')?.dirty || newVehicle.get('model')?.touched)
+          "
+          class="text-red-500 text-xs italic"
+        >
+          Model is required.
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="fuel"
+          >Fuel</label
+        >
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="fuel"
+          type="text"
+          formControlName="fuel"
+        />
+        <div
+          *ngIf="
+            newVehicle.get('fuel')?.invalid &&
+            (newVehicle.get('fuel')?.dirty || newVehicle.get('fuel')?.touched)
+          "
+          class="text-red-500 text-xs italic"
+        >
+          Fuel is required.
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="type"
+          >Type</label
+        >
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="type"
+          type="text"
+          formControlName="type"
+        />
+        <div
+          *ngIf="
+            newVehicle.get('type')?.invalid &&
+            (newVehicle.get('type')?.dirty || newVehicle.get('type')?.touched)
+          "
+          class="text-red-500 text-xs italic"
+        >
+          Type is required.
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="vin"
+          >VIN</label
+        >
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="vin"
+          type="text"
+          formControlName="vin"
+        />
+        <div
+          *ngIf="
+            newVehicle.get('vin')?.invalid &&
+            (newVehicle.get('vin')?.dirty || newVehicle.get('vin')?.touched)
+          "
+          class="text-red-500 text-xs italic"
+        >
+          VIN is required.
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="color"
+          >Color</label
+        >
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="color"
+          type="text"
+          formControlName="color"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="mileage"
+          >Mileage</label
+        >
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="mileage"
+          type="number"
+          formControlName="mileage"
+        />
+      </div>
+      <div class="flex justify-end">
+        <button
+          type="submit"
+          class="bg-[#111111] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

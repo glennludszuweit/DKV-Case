@@ -1,9 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { catchError } from 'rxjs';
 import { Vehicle } from '../models/vehicle.types';
-import { VehiclesService } from '../services/vehicles/vehicles.service';
+import * as VehicleActions from '../store/vehicle/vehicle.actions';
+import {
+  selectAllVehicles,
+  selectVehicleError,
+  selectVehicleLoading,
+} from '../store/vehicle/vehicle.selectors';
 
 @Component({
   selector: 'app-home',
@@ -13,18 +19,24 @@ import { VehiclesService } from '../services/vehicles/vehicles.service';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  vehiclesService = inject(VehiclesService);
+  private store = inject(Store);
   vehicles = signal<Vehicle[]>([]);
+  vehicleLoading = this.store.select(selectVehicleLoading);
+  vehicleError = this.store.select(selectVehicleError);
 
   ngOnInit(): void {
-    this.vehiclesService
-      .getVehicles()
+    this.store.dispatch(VehicleActions.loadVehicles());
+
+    this.store
+      .select(selectAllVehicles)
       .pipe(
         catchError((err) => {
-          console.error('Error fetching vehicles', err);
+          console.error('Error loading vehicles', err);
           throw err;
         })
       )
-      .subscribe((el) => this.vehicles.set(el));
+      .subscribe((vehicles) => {
+        this.vehicles.set(vehicles);
+      });
   }
 }

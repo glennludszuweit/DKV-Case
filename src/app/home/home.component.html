@@ -1,9 +1,27 @@
-@for (vehicle of vehicles(); track vehicle.id) {
-<div class="">
-  <a
-    [routerLink]="'/vehicle/' + vehicle.id"
-    routerLinkActive="router-link-active"
-    >{{ vehicle.name }}</a
-  >
+<div class="container mx-auto p-6">
+  <div *ngIf="vehicles(); else loadingOrError" class="flex flex-wrap gap-4">
+    @for (vehicle of vehicles(); track vehicle.id) {
+    <div
+      [routerLink]="'/vehicle/' + vehicle.id"
+      class="w-96 p-6 rounded-lg shadow-2xl cursor-pointer flex-grow"
+    >
+      <div class="p-3">
+        <h1 class="text-2xl font-semibold mb-2">{{ vehicle.name }}</h1>
+        <p>{{ vehicle.manufacturer }} - {{ vehicle.model }}</p>
+        <p *ngIf="vehicle.mileage">Mileage: {{ vehicle.mileage }} miles</p>
+      </div>
+    </div>
+    }
+  </div>
+
+  <ng-template #loadingOrError>
+    <div *ngIf="vehicleError | async; else loading" class="text-center mt-8">
+      <p class="text-red-500 font-semibold">Error loading vehicle</p>
+    </div>
+    <ng-template #loading>
+      <div *ngIf="vehicleLoading" class="text-center mt-8">
+        <p class="text-gray-600 animate-pulse">Loading vehicle details...</p>
+      </div>
+    </ng-template>
+  </ng-template>
 </div>
-}

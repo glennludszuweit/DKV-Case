@@ -1,3 +1,60 @@
-<div class="">
-  <h1>{{ vehicle()?.name }}</h1>
+<div class="container mx-auto p-6">
+  <div
+    *ngIf="vehicle(); else loadingOrError"
+    class="bg-white rounded-lg shadow-md p-6"
+  >
+    <h1 class="text-3xl font-semibold mb-6 text-gray-800">
+      {{ vehicle()?.name }}
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <div class="mb-4 grid grid-cols-2">
+          <div class="text-gray-700 mb-1">Manufacturer:</div>
+          <div class="font-bold text-gray-900 font-bold">
+            {{ vehicle()?.manufacturer }}
+          </div>
+        </div>
+        <div class="mb-4 grid grid-cols-2">
+          <div class="text-gray-700 mb-1">Model:</div>
+          <div class="font-bold font-bold text-gray-900">
+            {{ vehicle()?.model }}
+          </div>
+        </div>
+        <div class="mb-4 grid grid-cols-2">
+          <div class="text-gray-700 mb-1">Fuel:</div>
+          <div class="font-bold text-gray-900">{{ vehicle()?.fuel }}</div>
+        </div>
+        <div class="mb-4 grid grid-cols-2">
+          <div class="text-gray-700 mb-1">Type:</div>
+          <div class="font-bold text-gray-900">{{ vehicle()?.type }}</div>
+        </div>
+        <div class="mb-4 grid grid-cols-2">
+          <div class="text-gray-700 mb-1">VIN:</div>
+          <div class="font-bold text-gray-900">{{ vehicle()?.vin }}</div>
+        </div>
+      </div>
+      <div>
+        <div *ngIf="vehicle()?.color" class="mb-4 grid grid-cols-2">
+          <div class="text-gray-700 mb-1">Color:</div>
+          <div class="font-bold text-gray-900">{{ vehicle()?.color }}</div>
+        </div>
+        <div *ngIf="vehicle()?.mileage" class="mb-4 grid grid-cols-2">
+          <div class="text-gray-700 mb-1">Mileage:</div>
+          <div class="font-bold text-gray-900">{{ vehicle()?.mileage }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loadingOrError>
+    <div *ngIf="vehicleError | async; else loading" class="text-center mt-8">
+      <p class="text-red-500 font-semibold">Error loading vehicle</p>
+    </div>
+    <ng-template #loading>
+      <div *ngIf="vehicleLoading" class="text-center mt-8">
+        <p class="text-gray-600 animate-pulse">Loading vehicle details...</p>
+      </div>
+    </ng-template>
+  </ng-template>
 </div>
