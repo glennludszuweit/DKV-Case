@@ -1,6 +1,6 @@
 <div
   *ngIf="isOpen()"
-  class="fixed inset-0 flex items-center justify-center bg-[#111111] absolute"
+  class="fixed inset-0 flex items-center justify-center bg-[#483930] opacity-98 absolute"
 >
   <div class="bg-white rounded-lg p-6 shadow-xl w-1/2 relative">
     <button
@@ -179,3 +179,10 @@
     </form>
   </div>
 </div>
+
+<app-toast
+  [message]="toastMessage"
+  [type]="toastType"
+  [show]="toastVisible"
+  (close)="closeToast()"
+/>

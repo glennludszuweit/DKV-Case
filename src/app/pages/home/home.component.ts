@@ -3,13 +3,13 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { catchError } from 'rxjs';
-import { Vehicle } from '../models/vehicle.types';
-import * as VehicleActions from '../store/vehicle/vehicle.actions';
+import { Vehicle } from '../../models/vehicle.types';
+import * as VehicleActions from '../../store/vehicle/vehicle.actions';
 import {
   selectAllVehicles,
   selectVehicleError,
   selectVehicleLoading,
-} from '../store/vehicle/vehicle.selectors';
+} from '../../store/vehicle/vehicle.selectors';
 
 @Component({
   selector: 'app-home',

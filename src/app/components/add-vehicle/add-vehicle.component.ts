@@ -15,23 +15,26 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Vehicle } from '../../models/vehicle.types';
-import { VehiclesService } from '../../services/vehicles/vehicles.service';
 import * as VehicleActions from '../../store/vehicle/vehicle.actions';
+import { selectVehicleError } from '../../store/vehicle/vehicle.selectors';
+import { ToastComponent } from '../toast/toast.component';
 
 @Component({
   selector: 'app-add-vehicle',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ToastComponent],
   templateUrl: './add-vehicle.component.html',
   styleUrl: './add-vehicle.component.css',
 })
 export class AddVehicleComponent {
   @Input() isOpen = signal(false);
   @Output() closeModal = new EventEmitter<void>();
-
-  private vehiclesService = inject(VehiclesService);
   private formBuilder = inject(FormBuilder);
   private store = inject(Store);
+
+  toastMessage = signal<string>('');
+  toastType = signal<'success' | 'error' | 'warning' | 'info'>('info');
+  toastVisible = signal<boolean>(false);
 
   newVehicle: FormGroup;
 
@@ -58,6 +61,21 @@ export class AddVehicleComponent {
       const vehicle: Vehicle = this.newVehicle.value;
       this.store.dispatch(VehicleActions.addVehicle({ vehicle }));
       this.close();
+
+      this.store.select(selectVehicleError).subscribe((error) => {
+        if (error) {
+          this.toastMessage.set('Failed to add vehicle.');
+          this.toastType.set('error');
+        } else {
+          this.toastMessage.set('Vehicle added successfully.');
+          this.toastType.set('success');
+        }
+        this.toastVisible.set(true);
+      });
     }
+  }
+
+  closeToast() {
+    this.toastVisible.set(false);
   }
 }

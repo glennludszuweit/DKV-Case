@@ -3,7 +3,7 @@
     @for (vehicle of vehicles(); track vehicle.id) {
     <div
       [routerLink]="'/vehicle/' + vehicle.id"
-      class="w-96 p-6 rounded-lg shadow-2xl cursor-pointer flex-grow"
+      class="w-96 p-6 rounded-lg shadow-2xl cursor-pointer flex-grow text-[#111111] bg-white"
     >
       <div class="p-3">
         <h1 class="text-2xl font-semibold mb-2">{{ vehicle.name }}</h1>
