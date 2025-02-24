@@ -36,7 +36,10 @@ export class HomeComponent implements OnInit {
         })
       )
       .subscribe((vehicles) => {
-        this.vehicles.set(vehicles);
+        const sortedVehicles = [...vehicles].sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        this.vehicles.set(sortedVehicles);
       });
   }
 }
