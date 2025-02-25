@@ -24,20 +24,6 @@ This project is an Angular 17 application designed to manage a list of vehicles.
     * Typescript: Used for strongly typed code.
     * RxJS: Used for reactive programming.
 
-## Project Structure
-
-* `src/app/`: Contains the application's components, services, and NgRx store.
-    * `src/app/components/`: Contains the application's components.
-    * `src/app/models/`: Contains the application's data models.
-    * `src/app/store/`: Contains the NgRx store modules.
-    * `src/app/services/`: Contains the services for api calls.
-    * `src/app/toast/`: custom toast component.
-* `src/assets/`: Contains static assets such as images.
-* `src/styles.css`: Contains global styles.
-* `tailwind.config.js`: Tailwind CSS configuration file.
-* `postcss.config.js`: PostCSS configuration file.
-* `app.config.ts`: Angular 17 application configuration.
-
 ## Setup Instructions
 
 1.  **Clone the Repository:**
@@ -98,10 +84,3 @@ This project is an Angular 17 application designed to manage a list of vehicles.
 * Tailwind CSS 4 is used for styling the application.
 * Utility classes are used to style the components.
 * Tailwind CSS 4 provides a responsive and visually appealing user interface.
-
-## Future Enhancements
-
-* Implement search and filtering functionality.
-* Add unit and integration tests.
-* Improve accessibility.
-* Add more detailed vehicle information.
