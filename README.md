@@ -105,11 +105,3 @@ This project is an Angular 17 application designed to manage a list of vehicles.
 * Add unit and integration tests.
 * Improve accessibility.
 * Add more detailed vehicle information.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues.
-
-## License
-
-This project is licensed under the MIT License.
