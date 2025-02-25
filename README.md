@@ -1,27 +1,115 @@
-# DkvCase
+# DKV Case - Angular 17 Vehicle Management Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+This project is an Angular 17 application designed to manage a list of vehicles. It utilizes modern Angular features, Tailwind CSS 4 for styling, and NgRx for state management.
 
-## Development server
+## Technologies Used
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+* **Angular 17:**
+    * Standalone Components: The application is built using Angular 17's standalone component architecture, eliminating the need for traditional NgModules.
+    * `app.config.ts`: Configuration is managed through `app.config.ts`, simplifying provider setup.
+    * `inject()`: Dependency injection is handled using the `inject()` function, providing a concise way to access services and other dependencies.
+    * Signals: Signals are used for reactive state management within components, enabling efficient change detection and data flow.
+    * Reactive Forms: Angular's Reactive Forms are used for managing form inputs, providing a robust and flexible way to handle user input.
+    * FormBuilder: The `FormBuilder` service is used to create form groups and controls, simplifying form setup.
+    * Reactive Data Passing: Data is passed reactively throughout the application using signals and observables, ensuring that changes are reflected in the UI.
+* **Tailwind CSS 4:**
+    * Utility-First Styling: Tailwind CSS 4 is used for styling the application, providing a utility-first approach that promotes rapid UI development.
+    * JIT Engine: Tailwind CSS 4's Just-in-Time (JIT) engine is used for on-demand CSS generation, optimizing performance.
+* **NgRx:**
+    * State Management: NgRx is used for centralized state management, providing a predictable and scalable way to manage application state.
+    * Actions, Reducers, Effects: NgRx actions, reducers, and effects are used to manage data flow and side effects.
+    * NgRx Entity: NgRx Entity is used to manage collections of entities, simplifying data manipulation.
+    * Selectors: NgRx selectors are used to retrieve data from the store, providing efficient data access.
+* **Other:**
+    * Typescript: Used for strongly typed code.
+    * RxJS: Used for reactive programming.
 
-## Code scaffolding
+## Project Structure
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* `src/app/`: Contains the application's components, services, and NgRx store.
+    * `src/app/components/`: Contains the application's components.
+    * `src/app/models/`: Contains the application's data models.
+    * `src/app/store/`: Contains the NgRx store modules.
+    * `src/app/services/`: Contains the services for api calls.
+    * `src/app/toast/`: custom toast component.
+* `src/assets/`: Contains static assets such as images.
+* `src/styles.css`: Contains global styles.
+* `tailwind.config.js`: Tailwind CSS configuration file.
+* `postcss.config.js`: PostCSS configuration file.
+* `app.config.ts`: Angular 17 application configuration.
 
-## Build
+## Setup Instructions
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1.  **Clone the Repository:**
 
-## Running unit tests
+    ```bash
+    git clone <repository-url>
+    cd <project-directory>
+    ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2.  **Install Dependencies:**
 
-## Running end-to-end tests
+    ```bash
+    npm install
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3.  **Run the Application:**
 
-## Further help
+    ```bash
+    ng serve
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4.  **Open in Browser:**
+
+    * Open your browser and navigate to `http://localhost:4200/`.
+
+## Key Features
+
+* **Vehicle List:** Displays a list of vehicles, sorted alphabetically by name.
+* **Vehicle Details:** Displays detailed information for a selected vehicle.
+* **Add Vehicle:** Allows users to add new vehicles to the list.
+* **Error Handling:** Implements robust error handling for API calls and other operations.
+* **Toast Notifications:** Provides user feedback through toast notifications for successful and failed operations.
+* **Reactive State Management:** Uses signals and NgRx for reactive state management.
+* **Responsive Design:** Uses Tailwind CSS for a responsive and visually appealing user interface.
+
+## NgRx State Management
+
+* The application uses NgRx to manage the state of the vehicle list and vehicle details.
+* Actions are dispatched to trigger state changes.
+* Reducers update the state based on the actions.
+* Effects handle side effects such as API calls.
+* Selectors retrieve data from the store.
+
+## Signal Usage
+
+* Signals are used for reactive state management within components.
+* Signals are used to manage the state of the vehicle list, vehicle details, and toast notifications.
+* Signals are used to pass data between components.
+
+## Reactive Forms
+
+* Reactive Forms are used to manage form inputs for adding vehicles.
+* The `FormBuilder` service is used to create form groups and controls.
+* Reactive Forms provide a robust and flexible way to handle user input.
+
+## Tailwind CSS 4
+
+* Tailwind CSS 4 is used for styling the application.
+* Utility classes are used to style the components.
+* Tailwind CSS 4 provides a responsive and visually appealing user interface.
+
+## Future Enhancements
+
+* Implement search and filtering functionality.
+* Add unit and integration tests.
+* Improve accessibility.
+* Add more detailed vehicle information.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit pull requests or open issues.
+
+## License
+
+This project is licensed under the MIT License.
